@@ -1,5 +1,5 @@
 module.exports = function(app) {
-    app.get('/formulario_inclusao_noticias', function(req, res) {
+    app.get('/formulario_inclusao_noticia', function(req, res) {
         res.render('admin/form_add_noticias', { validacao: {}, noticia: {} });
     });
 
@@ -15,11 +15,11 @@ module.exports = function(app) {
 
         var erros = req.validationErrors();
 
-        console.log(erros);
+        console.log(erros); //Mostra a lista de erros no console no terminal
 
         if (erros) {
-            res.render("admin/form_add_noticias", { validacao: erros, noticia: noticia });
-            return;
+            res.render("admin/form_add_noticias", { validacao: erros, noticia: noticia }); //Retorna à pagina de inclusão de notícia
+            return; //Interrompe a execução
         }
 
         var connection = app.config.dbConnection();
